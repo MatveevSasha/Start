@@ -25,6 +25,7 @@
         android:id="@+id/topAppBar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
+        android:background="@color/bottom_nav_background"
         app:layout_constraintTop_toBottomOf="@id/app_title"
         app:menu="@menu/menu_toolbar"
         style="@style/Widget.MaterialComponents.Toolbar.Primary" />
@@ -52,7 +53,7 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="match_parent"
-                app:srcCompat="@drawable/intersteller" />
+                app:srcCompat="@drawable/poster_1" />
 
             <ImageView
                 android:id="@+id/imageView2"
@@ -60,7 +61,7 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="match_parent"
-                app:srcCompat="@drawable/harry_potter" />
+                app:srcCompat="@drawable/poster_2" />
 
             <ImageView
                 android:id="@+id/imageView3"
@@ -68,7 +69,7 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="match_parent"
-                app:srcCompat="@drawable/avatar" />
+                app:srcCompat="@drawable/poster_3" />
 
             <ImageView
                 android:id="@+id/imageView4"
@@ -76,8 +77,9 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="match_parent"
-                app:srcCompat="@drawable/vlastelin" />
+                app:srcCompat="@drawable/poster_4" />
         </LinearLayout>
+
     </androidx.cardview.widget.CardView>
 
     <!-- TextView с источником -->
@@ -95,7 +97,81 @@
         android:textSize="14sp"
         app:layout_constraintTop_toBottomOf="@id/topMenu"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="@id/gridLayout"/>
+
+    <GridLayout
+        android:id="@+id/gridLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:columnCount="2"
+        android:orientation="horizontal"
+        android:layoutAnimation="@anim/card_layout_animation"
+        android:useDefaultMargins="true"
+        app:layout_constraintTop_toBottomOf="@+id/source_text"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_nav"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <!-- Первое изображение -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="130dp"
+            android:layout_height="180dp"
+            app:cardCornerRadius="15dp"
+            android:layout_margin="8dp"
+            android:stateListAnimator="@animator/poster_click_animation">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/duna"
+                android:scaleType="centerCrop"/>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Второе изображение -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="130dp"
+            android:layout_height="180dp"
+            app:cardCornerRadius="15dp"
+            android:layout_margin="8dp"
+            android:stateListAnimator="@animator/poster_click_animation">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/forsazh"
+                android:scaleType="centerCrop"/>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Третье изображение -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="130dp"
+            android:layout_height="180dp"
+            app:cardCornerRadius="15dp"
+            android:layout_margin="8dp"
+            android:stateListAnimator="@animator/poster_click_animation">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/djentelmenu"
+                android:scaleType="centerCrop"/>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Четвертое изображение -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="130dp"
+            android:layout_height="180dp"
+            app:cardCornerRadius="15dp"
+            android:layout_margin="8dp"
+            android:stateListAnimator="@animator/poster_click_animation">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/odindoma"
+                android:scaleType="centerCrop"/>
+        </androidx.cardview.widget.CardView>
+    </GridLayout>
+
+
+
 
     <!-- BottomNavigation -->
     <com.google.android.material.bottomnavigation.BottomNavigationView
