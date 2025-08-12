@@ -5,40 +5,85 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import android.view.animation.AnimationUtils // Исправлено
-import android.widget.GridLayout
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.start.data.Film
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
 
+    private val filmsDataBase = listOf(
+        Film(
+            title = "Дюна",
+            poster = R.drawable.poster_duna,
+            description = "Эпическая история о борьбе за контроль над планетой Арракис"
+        ),
+        Film(
+            title = "Джентельмены",
+            poster = R.drawable.poster_djentelmenu,
+            description = "Описание"
+        ),
+        Film(
+            title = "Форсаж",
+            poster = R.drawable.poster_forsazh,
+            description = "Описание"
+        ),
+        Film(
+            title = "Один дома",
+            poster = R.drawable.poster_odindoma,
+            description = "Описание"
+        ),
+        Film(
+            title = "Друзья",
+            poster = R.drawable.poster_druzya,
+            description = "Описание"
+        ),
+        Film(
+            title = "Леон",
+            poster = R.drawable.poster_leon,
+            description = "Описание"
+        ),
+        Film(
+            title = "Волк с Уолл-стрит",
+            poster = R.drawable.poster_volksuoltstrit,
+            description = "Описание"
+        )
+    )
+
     private lateinit var toolbar: MaterialToolbar
     private lateinit var bottomNavigation: BottomNavigationView
-    private lateinit var gridLayout: GridLayout // Теперь правильно
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var filmsAdapter: FilmListRecyclerAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        // Инициализация RecyclerView
+        recyclerView = findViewById(R.id.main_recycler)
+        filmsAdapter = FilmListRecyclerAdapter(
+            object : FilmListRecyclerAdapter.OnItemClickListener {
+                override fun click(film: Film) {
+                    // Обработчик клика
+                }
+            }
+        )
 
-        gridLayout = findViewById<GridLayout>(R.id.gridLayout) // Явное приведение типа
+        recyclerView.apply {
+            adapter = filmsAdapter
+            layoutManager = LinearLayoutManager(this@MainActivity)
 
-
-        try {
-            val layoutAnimation = AnimationUtils.loadLayoutAnimation(
-                this,
-                R.anim.card_layout_animation
-            )
-            gridLayout.layoutAnimation = layoutAnimation
-        } catch (e: Exception) {
-            Toast.makeText(this, "Ошибка загрузки анимации", Toast.LENGTH_SHORT).show()
+            // Добавляем отступы
+            val decorator = TopSpacingItemDecoration(8)
+            addItemDecoration(decorator)
         }
 
+        filmsAdapter.addItems(filmsDataBase)
 
         toolbar = findViewById(R.id.topAppBar)
         setSupportActionBar(toolbar)
         toolbar.title = getString(R.string.app_name)
-
 
         bottomNavigation = findViewById(R.id.bottom_nav)
         bottomNavigation.menu.clear()
