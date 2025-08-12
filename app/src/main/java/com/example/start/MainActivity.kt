@@ -20,10 +20,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-// Находим GridLayout
+
         gridLayout = findViewById<GridLayout>(R.id.gridLayout) // Явное приведение типа
 
-// Добавляем анимацию
+
         try {
             val layoutAnimation = AnimationUtils.loadLayoutAnimation(
                 this,
@@ -34,12 +34,12 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(this, "Ошибка загрузки анимации", Toast.LENGTH_SHORT).show()
         }
 
-// Настройка Toolbar
+
         toolbar = findViewById(R.id.topAppBar)
         setSupportActionBar(toolbar)
         toolbar.title = getString(R.string.app_name)
 
-// Настройка BottomNavigation
+
         bottomNavigation = findViewById(R.id.bottom_nav)
         bottomNavigation.menu.clear()
         bottomNavigation.inflateMenu(R.menu.menu_navigation)
