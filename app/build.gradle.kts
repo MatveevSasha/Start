@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.kotlin.parcelize)
 }
 
 android {
@@ -33,10 +34,13 @@ android {
     kotlinOptions {
         jvmTarget = "17"
     }
+    buildFeatures {
+        dataBinding = true
+    }
 }
 
 dependencies {
-
+    implementation(libs.material.v180)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)

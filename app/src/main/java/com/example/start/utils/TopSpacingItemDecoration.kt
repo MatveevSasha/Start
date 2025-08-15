@@ -1,4 +1,4 @@
-package com.example.start
+package com.example.start.utils
 
 import android.content.res.Resources
 import android.graphics.Rect

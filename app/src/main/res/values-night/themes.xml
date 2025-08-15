@@ -1,7 +1,13 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
+<!-- res/values-night/themes.xml -->
+<resources>
     <style name="Base.Theme.Start" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your dark theme here. -->
-        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+        <!-- Цвета для темной темы -->
+        <item name="colorPrimary">@color/primaryColorDark</item>
+        <item name="colorOnPrimary">@color/onPrimaryColorDark</item>
+        <item name="backgroundColor">@color/backgroundColorDark</item>
+
+        <!-- Настройки для элементов интерфейса -->
+        <item name="android:windowBackground">@color/backgroundColorDark</item>
+        <item name="android:statusBarColor">@color/primaryColorDark</item>
     </style>
 </resources>

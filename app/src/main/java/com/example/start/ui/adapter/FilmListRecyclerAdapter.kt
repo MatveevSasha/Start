@@ -1,10 +1,11 @@
-package com.example.start
+package com.example.start.ui.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.start.R
 import com.example.start.data.Film
-import com.example.start.FilmViewHolder
+import com.example.start.ui.adapter.FilmViewHolder
 
 class FilmListRecyclerAdapter(private val clickListener: OnItemClickListener) :
     RecyclerView.Adapter<FilmViewHolder>() {
@@ -23,9 +24,14 @@ class FilmListRecyclerAdapter(private val clickListener: OnItemClickListener) :
         )
     }
 
-    // Привязываем данные к ViewHolder
+    // Привязываем данные к ViewHolder и добавляем обработчик клика
     override fun onBindViewHolder(holder: FilmViewHolder, position: Int) {
         holder.bind(items[position])
+
+        // Добавляем обработчик клика на элемент
+        holder.itemView.setOnClickListener {
+            clickListener.click(items[position])
+        }
     }
 
     // Метод для добавления данных

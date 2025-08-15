@@ -1,9 +1,10 @@
-package com.example.start
+package com.example.start.ui.adapter
 
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.start.R
 import com.example.start.data.Film
 
 class FilmViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
